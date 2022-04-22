@@ -1,0 +1,22 @@
+{% extends "base.html"%}{% block content %}{%load static%}
+<section class="content">
+    <section class="post_form"> 
+        <form action="/edit/{{post.id}}/" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+            <input type="text" name ="name" value="{{post.name}}" required>
+            <input name="body" name ="name" value="{{post.body}}" required>
+            <input type="file" id="file">
+
+            {% if post.image.url %}
+                <img src="{{ post.image.url}}" style="width: 100%">
+                {% endif%}
+    
+            <a href="{% url 'index'%}" type="submit"> Cancel</a> 
+            <input type="submit" value="tweet" id="tweet"/>
+        </form>
+   
+    </section>
+</section>
+
+
+{%endblock%}
